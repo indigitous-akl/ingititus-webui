@@ -12,6 +12,8 @@ interface Props {
   element: FC<any>;
 }
 
+const drawerWidth = 240;
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     search: {
@@ -62,6 +64,10 @@ const useStyles = makeStyles((theme: Theme) =>
         },
       },
     },
+    appBar: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
   }),
 );
 
@@ -75,7 +81,7 @@ const SearchableList: FC<Props> = ({ loading, itemType, items, element }) => {
 
   return (
     <Fragment>
-      <AppBar position="fixed">
+      <AppBar className={classes.appBar} position="fixed">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             {itemType}

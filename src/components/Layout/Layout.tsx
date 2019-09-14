@@ -15,10 +15,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
     },
-    appBar: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
