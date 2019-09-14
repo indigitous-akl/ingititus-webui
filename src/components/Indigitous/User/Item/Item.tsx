@@ -10,7 +10,7 @@ interface Props {
 
 const User: FC<Props> = ({ item: { uid, name, email }, onClick }) => {
   return (
-    <Link href="/indigitous/users/[id]" as={`/indigitous/users/${uid}`}>
+    <Link href="/indigitous/users/[uid]" as={`/indigitous/users/${uid}`}>
       <ListItem button onClick={onClick} component="a" ContainerComponent="div">
         <ListItemAvatar>
           <Avatar>{name[0]}</Avatar>

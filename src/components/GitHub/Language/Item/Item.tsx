@@ -29,7 +29,7 @@ const GitHubLanguageItem: FC<Props> = ({ item: { uid, name, users } }) => {
 
   return (
     <Fragment>
-      <Link href="/github/languages/[id]" as={`/github/languages/${uid}`}>
+      <Link href="/github/languages/[uid]" as={`/github/languages/${uid}`}>
         <ListItem ContainerComponent="div" component="a" button>
           <ListItemText primary={name} secondary={users && users.length > 0 && `${users.length} developers`} />
           {users && users.length > 0 && (

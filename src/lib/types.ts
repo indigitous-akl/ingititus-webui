@@ -12,12 +12,12 @@ export interface GitHubLanguageType extends BaseType {
 export interface GitHubUserType extends BaseType {
   email: string;
   login: string;
-  repositories: GitHubRepositoryType[];
-  languages: GitHubLanguageType[];
+  repositories?: GitHubRepositoryType[];
+  languages?: GitHubLanguageType[];
 }
 
 export interface IndigitousUserType extends BaseType {
   email: string;
-  is: GitHubUserType | null;
-  mightBe: GitHubUserType[];
+  is?: GitHubUserType;
+  mightBe?: GitHubUserType[];
 }

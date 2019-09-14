@@ -1,2 +1,2 @@
-import GitHubUserList from './Item';
-export default GitHubUserList;
+import ItemContainer from './Item';
+export default ItemContainer;

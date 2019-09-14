@@ -1,21 +1,23 @@
-import { createElement, FC, useEffect, useState } from 'react';
+import React, { createElement, FC, Fragment, useEffect, useState } from 'react';
 import g from '../../lib/client';
 import { BaseType } from '../../lib/types';
 
 interface Props {
+  uid: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   element: FC<any>;
   type: string;
 }
 
-const ItemContainer: FC<Props> = ({ element, type }) => {
-  const [items, setItems] = useState([] as BaseType[]);
+const ItemContainer: FC<Props> = ({ uid, element, type }) => {
+  const [item, setItem] = useState(({} as unknown) as BaseType);
   const [loading, setLoading] = useState(true);
 
   const fetchData = async (): Promise<void> => {
     const response = await g()
       .V()
       .hasLabel(type)
+      .has('uid', uid)
       .valueMap()
       .toList();
     const items = response.map(remoteItem => {
@@ -25,16 +27,15 @@ const ItemContainer: FC<Props> = ({ element, type }) => {
       });
       return item as BaseType;
     });
-    setItems(items);
+    setItem(items[0]);
     setLoading(false);
-    console.log(items);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  return createElement(element, { loading: loading, items: items });
+  return loading ? <Fragment /> : createElement(element, { item: item });
 };
 
 export default ItemContainer;

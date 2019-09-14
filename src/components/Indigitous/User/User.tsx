@@ -19,7 +19,7 @@ import { IndigitousUserType } from '../../../lib/types';
 import GitHubUserItem from '../../GitHub/User/Item';
 
 interface Props {
-  user: IndigitousUserType;
+  item: IndigitousUserType;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const User: FC<Props> = ({ user: { name, email, is, mightBe } }) => {
+const User: FC<Props> = ({ item: { name, email, is, mightBe } }) => {
   const classes = useStyles();
   const [checkedId, setCheckedId] = useState('');
 
@@ -61,7 +61,7 @@ const User: FC<Props> = ({ user: { name, email, is, mightBe } }) => {
           <GitHubUserItem item={is}></GitHubUserItem>
         </Card>
       )}
-      {mightBe.length > 0 && (
+      {mightBe && mightBe.length > 0 && (
         <Card className={classes.card}>
           <CardContent>
             <Typography variant="subtitle1">Potential GitHub User Matches</Typography>

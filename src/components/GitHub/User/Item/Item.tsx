@@ -11,7 +11,7 @@ interface Props {
 
 const User: FC<Props> = ({ item: { uid, name, login }, onClick, children }) => {
   return (
-    <Link href="/github/users/[id]" as={`/github/users/${uid}`}>
+    <Link href="/github/users/[uid]" as={`/github/users/${uid}`}>
       <ListItem button onClick={onClick} component="a" ContainerComponent="div">
         {children || (
           <ListItemAvatar>

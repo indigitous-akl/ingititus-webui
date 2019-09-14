@@ -29,7 +29,7 @@ const GitHubRepositoryItem: FC<Props> = ({ item: { uid, name, users } }) => {
 
   return (
     <Fragment>
-      <Link href="/github/repositories/[id]" as={`/github/repositories/${uid}`}>
+      <Link href="/github/repositories/[uid]" as={`/github/repositories/${uid}`}>
         <ListItem ContainerComponent="div" component="a" button>
           <ListItemText primary={name} secondary={users && users.length > 0 && `${users.length} collaborators`} />
           {users && users.length > 0 && (
