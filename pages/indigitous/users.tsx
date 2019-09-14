@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import React, { FC, Fragment } from 'react';
-import GitHubUserList from '../../src/components/GitHub/User/List';
+import IndigitousUserList from '../../src/components/Indigitous/User/List';
 
 const users: FC = () => (
   <Fragment>
     <Head>
-      <title>GitHub Users</title>
+      <title>Indigitous Users</title>
     </Head>
-    <GitHubUserList users={[]}></GitHubUserList>
+    <IndigitousUserList users={[]}></IndigitousUserList>
   </Fragment>
 );
 export default users;

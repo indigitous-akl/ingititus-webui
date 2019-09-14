@@ -2,12 +2,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
 import App from 'next/app';
 import Head from 'next/head';
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
+import Layout from '../src/components/Layout';
 import theme from '../src/lib/theme';
 
 export default class MyApp extends App {
   public componentDidMount(): void {
-    // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     jssStyles && jssStyles.parentNode && jssStyles.parentNode.removeChild(jssStyles);
   }
@@ -16,16 +16,17 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <Head>
           <title>My page</title>
         </Head>
         <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
