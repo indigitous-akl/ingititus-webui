@@ -3,10 +3,10 @@ export interface BaseType {
   name: string;
 }
 export interface GitHubRepositoryType extends BaseType {
-  users: GitHubUserType[];
+  users?: GitHubUserType[];
 }
 export interface GitHubLanguageType extends BaseType {
-  users: GitHubUserType[];
+  users?: GitHubUserType[];
 }
 
 export interface GitHubUserType extends BaseType {

@@ -8,7 +8,7 @@ const GitHubRepositoriesPage: FC = () => (
     <Head>
       <title>GitHub Repository</title>
     </Head>
-    <ListContainer element={GitHubRepositoryList} type="github_repository" />
+    <ListContainer element={GitHubRepositoryList} type="repository" />
   </Fragment>
 );
 export default GitHubRepositoriesPage;

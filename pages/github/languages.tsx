@@ -8,7 +8,7 @@ const GitHubLanguagesPage: FC = () => (
     <Head>
       <title>GitHub Languages</title>
     </Head>
-    <ListContainer element={GitHubLanguageList} type="github_language" />
+    <ListContainer element={GitHubLanguageList} type="language" />
   </Fragment>
 );
 export default GitHubLanguagesPage;

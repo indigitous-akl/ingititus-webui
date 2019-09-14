@@ -8,7 +8,7 @@ interface Props {
   type: string;
 }
 
-const ListContainer: FC<Props> = ({ element, type }) => {
+const ItemContainer: FC<Props> = ({ element, type }) => {
   const [items, setItems] = useState([] as BaseType[]);
   const [loading, setLoading] = useState(true);
 
@@ -37,4 +37,4 @@ const ListContainer: FC<Props> = ({ element, type }) => {
   return createElement(element, { loading: loading, items: items });
 };
 
-export default ListContainer;
+export default ItemContainer;
