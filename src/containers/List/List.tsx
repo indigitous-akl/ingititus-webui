@@ -27,7 +27,6 @@ const ListContainer: FC<Props> = ({ element, type }) => {
     });
     setItems(items);
     setLoading(false);
-    console.log(items);
   };
 
   useEffect(() => {
