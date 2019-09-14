@@ -1,16 +1,16 @@
 import React, { FC, useEffect, useState } from 'react';
-import IndigitousUserList from '../../components/Indigitous/User/List';
+import GitHubUserList from '../../components/GitHub/User/List';
 import g from '../../lib/client';
-import { IndigitousUserType } from '../../lib/types';
+import { GitHubUserType } from '../../lib/types';
 
 const Users: FC = () => {
-  const [users, setUsers] = useState([] as IndigitousUserType[]);
+  const [users, setUsers] = useState([] as GitHubUserType[]);
   const [loading, setLoading] = useState(true);
 
   const fetchData = async (): Promise<void> => {
     const response = await g()
       .V()
-      .hasLabel('indigitous_user')
+      .hasLabel('github_user')
       .valueMap()
       .toList();
     const users = response.map(remoteUser => {
@@ -18,7 +18,7 @@ const Users: FC = () => {
       remoteUser.toJSON().forEach(([key, value]) => {
         user[key] = value[0];
       });
-      return user as IndigitousUserType;
+      return user as GitHubUserType;
     });
     setUsers(users);
     setLoading(false);
@@ -28,7 +28,7 @@ const Users: FC = () => {
     fetchData();
   }, []);
 
-  return <IndigitousUserList loading={loading} users={users}></IndigitousUserList>;
+  return <GitHubUserList loading={loading} users={users}></GitHubUserList>;
 };
 
 export default Users;

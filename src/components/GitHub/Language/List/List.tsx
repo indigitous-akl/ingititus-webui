@@ -5,11 +5,10 @@ import GitHubLanguageItem from '../Item';
 
 interface Props {
   languages: GitHubLanguageType[];
-  onChange?: (value: string) => void;
 }
 
-const List: FC<Props> = ({ languages, onChange }) => (
-  <SearchableList itemType="GitHub Languages" items={languages} onChange={onChange} element={GitHubLanguageItem} />
+const List: FC<Props> = ({ languages }) => (
+  <SearchableList itemType="GitHub Languages" items={languages} element={GitHubLanguageItem} />
 );
 
 export default List;

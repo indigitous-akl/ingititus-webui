@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import React, { FC, Fragment } from 'react';
-import GitHubUserList from '../../src/components/GitHub/User/List';
+import GitHubUsersContainer from '../../src/containers/GitHub/Users';
 
 const users: FC = () => (
   <Fragment>
     <Head>
       <title>GitHub Users</title>
     </Head>
-    <GitHubUserList users={[]}></GitHubUserList>
+    <GitHubUsersContainer />
   </Fragment>
 );
 export default users;

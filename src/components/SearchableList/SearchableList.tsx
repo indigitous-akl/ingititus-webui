@@ -1,12 +1,14 @@
-import { AppBar, InputBase, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, InputBase, ListItem, ListItemAvatar, ListItemText, Toolbar, Typography } from '@material-ui/core';
 import { createStyles, fade, makeStyles, Theme } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import React, { createElement, FC, Fragment } from 'react';
+import { Skeleton } from '@material-ui/lab';
+import React, { createElement, FC, Fragment, useState } from 'react';
+import ReactSearchFuse from 'react-search-fuse';
 
 interface Props {
+  loading?: boolean;
   itemType: string;
   items: any[];
-  onChange?: (value: string) => void;
   element: FC<any>;
 }
 
@@ -48,6 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
     inputRoot: {
       color: 'inherit',
     },
+    toolbar: theme.mixins.toolbar,
     inputInput: {
       padding: theme.spacing(1, 1, 1, 7),
       transition: theme.transitions.create('width'),
@@ -62,12 +65,17 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const SearchableList: FC<Props> = ({ itemType, items, onChange, element }) => {
+const SearchableList: FC<Props> = ({ loading, itemType, items, element }) => {
   const classes = useStyles();
+  const [filter, setFilter] = useState('');
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setFilter(event.target.value);
+  };
 
   return (
     <Fragment>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             {itemType}
@@ -77,7 +85,7 @@ const SearchableList: FC<Props> = ({ itemType, items, onChange, element }) => {
               <SearchIcon />
             </div>
             <InputBase
-              onChange={event => onChange && onChange(event.target.value)}
+              onChange={onChange}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -88,16 +96,38 @@ const SearchableList: FC<Props> = ({ itemType, items, onChange, element }) => {
           </div>
         </Toolbar>
       </AppBar>
-      {items.length > 0 && items.map(item => element && createElement(element, { key: item.uid, item: item }))}
-      {items.length === 0 && (
-        <div>
-          <Typography className={classes.heading} variant="h6" align="center">
-            No {itemType} Found!
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary" align="center">
-            Try using other search parameters.
-          </Typography>
-        </div>
+      <div className={classes.toolbar} />
+      {loading ? (
+        <ListItem ContainerComponent="div">
+          <ListItemAvatar>
+            <Skeleton variant="circle" width={40} height={40} />
+          </ListItemAvatar>
+          <ListItemText>
+            <Skeleton height={6} width="80%" />
+            <Skeleton height={6} width="40%" />
+          </ListItemText>
+        </ListItem>
+      ) : (
+        <ReactSearchFuse options={{ keys: ['name'] }} documents={items} filter={filter}>
+          {results => (
+            <Fragment>
+              {(filter === '' ? items : results).length > 0 &&
+                (filter === '' ? items : results).map(
+                  item => element && createElement(element, { key: item.uid, item: item }),
+                )}
+              {(filter === '' ? items : results).length === 0 && (
+                <div>
+                  <Typography className={classes.heading} variant="h6" align="center">
+                    No {itemType} Found!
+                  </Typography>
+                  <Typography variant="subtitle1" color="textSecondary" align="center">
+                    Try using other search parameters.
+                  </Typography>
+                </div>
+              )}
+            </Fragment>
+          )}
+        </ReactSearchFuse>
       )}
     </Fragment>
   );

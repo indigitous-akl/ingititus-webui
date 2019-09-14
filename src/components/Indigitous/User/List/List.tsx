@@ -4,12 +4,12 @@ import SearchableList from '../../../SearchableList';
 import IndigitousUserItem from '../Item';
 
 interface Props {
+  loading: boolean;
   users: IndigitousUserType[];
-  onChange?: (value: string) => void;
 }
 
-const List: FC<Props> = ({ users, onChange }) => (
-  <SearchableList itemType="Indigitous Users" items={users} onChange={onChange} element={IndigitousUserItem} />
+const List: FC<Props> = ({ loading, users }) => (
+  <SearchableList loading={loading} itemType="Indigitous Users" items={users} element={IndigitousUserItem} />
 );
 
 export default List;

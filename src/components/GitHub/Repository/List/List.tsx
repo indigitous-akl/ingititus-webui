@@ -5,16 +5,10 @@ import GitHubRepositoryItem from '../Item';
 
 interface Props {
   repositories: GitHubRepositoryType[];
-  onChange?: (value: string) => void;
 }
 
-const List: FC<Props> = ({ repositories, onChange }) => (
-  <SearchableList
-    itemType="GitHub Repositories"
-    items={repositories}
-    onChange={onChange}
-    element={GitHubRepositoryItem}
-  />
+const List: FC<Props> = ({ repositories }) => (
+  <SearchableList itemType="GitHub Repositories" items={repositories} element={GitHubRepositoryItem} />
 );
 
 export default List;
