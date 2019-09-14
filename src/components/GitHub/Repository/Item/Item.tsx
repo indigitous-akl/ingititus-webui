@@ -7,7 +7,7 @@ import { GitHubRepositoryType } from '../../../../lib/types';
 import GitHubUserItem from '../../User/Item';
 
 interface Props {
-  repository: GitHubRepositoryType;
+  item: GitHubRepositoryType;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const GitHubRepositoryItem: FC<Props> = ({ repository: { name, users } }) => {
+const GitHubRepositoryItem: FC<Props> = ({ item: { name, users } }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -38,7 +38,7 @@ const GitHubRepositoryItem: FC<Props> = ({ repository: { name, users } }) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List className={classes.nested} component="div" disablePadding>
             {users.map(user => (
-              <GitHubUserItem key={user.id} user={user} />
+              <GitHubUserItem key={user.id} item={user} />
             ))}
           </List>
         </Collapse>

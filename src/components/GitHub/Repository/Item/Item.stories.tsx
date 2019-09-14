@@ -5,5 +5,5 @@ import GitHubRepositoryItem from './Item';
 
 storiesOf('GitHub/Repository/Item', module).add(
   'default',
-  (): ReactElement => <GitHubRepositoryItem repository={generateGitHubRepository()} />,
+  (): ReactElement => <GitHubRepositoryItem item={generateGitHubRepository()} />,
 );

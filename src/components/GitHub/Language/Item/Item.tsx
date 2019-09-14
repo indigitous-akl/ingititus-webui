@@ -7,7 +7,7 @@ import { GitHubLanguageType } from '../../../../lib/types';
 import GitHubUserItem from '../../User/Item';
 
 interface Props {
-  language: GitHubLanguageType;
+  item: GitHubLanguageType;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const GitHubLanguageItem: FC<Props> = ({ language: { name, users } }) => {
+const GitHubLanguageItem: FC<Props> = ({ item: { name, users } }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -29,7 +29,7 @@ const GitHubLanguageItem: FC<Props> = ({ language: { name, users } }) => {
   return (
     <Fragment>
       <ListItem ContainerComponent="div" button onClick={handleClick}>
-        <ListItemText primary={name} secondary={users.length > 0 && `${users.length} collaborators`} />
+        <ListItemText primary={name} secondary={users.length > 0 && `${users.length} developers`} />
         {users.length > 0 && (
           <ListItemSecondaryAction>{open ? <ExpandLess /> : <ExpandMore />}</ListItemSecondaryAction>
         )}
@@ -38,7 +38,7 @@ const GitHubLanguageItem: FC<Props> = ({ language: { name, users } }) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List className={classes.nested} component="div" disablePadding>
             {users.map(user => (
-              <GitHubUserItem key={user.id} user={user} />
+              <GitHubUserItem key={user.id} item={user} />
             ))}
           </List>
         </Collapse>

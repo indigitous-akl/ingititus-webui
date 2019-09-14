@@ -16,7 +16,7 @@ import {
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { FC, Fragment, useState } from 'react';
 import { IndigitousUserType } from '../../../lib/types';
-import GitHubUser from '../../GitHub/User/Item';
+import GitHubUserItem from '../../GitHub/User/Item';
 
 interface Props {
   user: IndigitousUserType;
@@ -58,7 +58,7 @@ const User: FC<Props> = ({ user: { name, email, is, mightBe } }) => {
             <Typography variant="subtitle1">GitHub User</Typography>
           </CardContent>
           <Divider />
-          <GitHubUser user={is}></GitHubUser>
+          <GitHubUserItem item={is}></GitHubUserItem>
         </Card>
       )}
       {mightBe.length > 0 && (
@@ -69,11 +69,11 @@ const User: FC<Props> = ({ user: { name, email, is, mightBe } }) => {
           <Divider />
           <List>
             {mightBe.map(user => (
-              <GitHubUser key={user.id} user={user} onClick={() => toggleCheckedId(user.id)}>
+              <GitHubUserItem key={user.id} item={user} onClick={() => toggleCheckedId(user.id)}>
                 <ListItemIcon>
                   <Radio edge="end" onChange={() => toggleCheckedId(user.id)} checked={user.id === checkedId} />
                 </ListItemIcon>
-              </GitHubUser>
+              </GitHubUserItem>
             ))}
           </List>
           <CardActions>

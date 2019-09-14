@@ -5,5 +5,5 @@ import GitHubLanguageItem from '././Item';
 
 storiesOf('GitHub/Language/Item', module).add(
   'default',
-  (): ReactElement => <GitHubLanguageItem language={generateGitHubLanguage()} />,
+  (): ReactElement => <GitHubLanguageItem item={generateGitHubLanguage()} />,
 );

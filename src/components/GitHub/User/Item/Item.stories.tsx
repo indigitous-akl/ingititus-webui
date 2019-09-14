@@ -5,5 +5,5 @@ import GitHubUserItem from './Item';
 
 storiesOf('GitHub/User/Item', module).add(
   'default',
-  (): ReactElement => <GitHubUserItem user={generateGitHubUser()} />,
+  (): ReactElement => <GitHubUserItem item={generateGitHubUser()} />,
 );

@@ -1,29 +1,31 @@
 import { Avatar, IconButton, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
-import { isFunction } from 'lodash/fp';
+import Link from 'next/link';
 import React, { FC } from 'react';
 import { GoMarkGithub } from 'react-icons/go';
 import { GitHubUserType } from '../../../../lib/types';
 
 interface Props {
-  user: GitHubUserType;
+  item: GitHubUserType;
   onClick?: () => void;
 }
 
-const User: FC<Props> = ({ user: { name, login }, onClick, children }) => {
+const User: FC<Props> = ({ item: { id, name, login }, onClick, children }) => {
   return (
-    <ListItem button={isFunction(onClick) as true} onClick={onClick} ContainerComponent="div">
-      {children || (
-        <ListItemAvatar>
-          <Avatar>{login[0]}</Avatar>
-        </ListItemAvatar>
-      )}
-      <ListItemText primary={name} secondary={login} />
-      <ListItemSecondaryAction>
-        <IconButton edge="end" href={`https://github.com/${login}`} target="_blank">
-          <GoMarkGithub />
-        </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
+    <Link href="/github/users/[id]" as={`/github/users/${id}`}>
+      <ListItem button onClick={onClick} component="a" ContainerComponent="div">
+        {children || (
+          <ListItemAvatar>
+            <Avatar>{login[0]}</Avatar>
+          </ListItemAvatar>
+        )}
+        <ListItemText primary={name} secondary={login} />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" href={`https://github.com/${login}`} target="_blank">
+            <GoMarkGithub />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+    </Link>
   );
 };
 
