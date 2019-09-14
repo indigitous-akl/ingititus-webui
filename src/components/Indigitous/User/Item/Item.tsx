@@ -8,9 +8,9 @@ interface Props {
   onClick?: () => void;
 }
 
-const User: FC<Props> = ({ item: { id, name, email }, onClick }) => {
+const User: FC<Props> = ({ item: { uid, name, email }, onClick }) => {
   return (
-    <Link href="/indigitous/users/[id]" as={`/indigitous/users/${id}`}>
+    <Link href="/indigitous/users/[id]" as={`/indigitous/users/${uid}`}>
       <ListItem button onClick={onClick} component="a" ContainerComponent="div">
         <ListItemAvatar>
           <Avatar>{name[0]}</Avatar>

@@ -69,9 +69,9 @@ const User: FC<Props> = ({ user: { name, email, is, mightBe } }) => {
           <Divider />
           <List>
             {mightBe.map(user => (
-              <GitHubUserItem key={user.id} item={user} onClick={() => toggleCheckedId(user.id)}>
+              <GitHubUserItem key={user.uid} item={user} onClick={() => toggleCheckedId(user.uid)}>
                 <ListItemIcon>
-                  <Radio edge="end" onChange={() => toggleCheckedId(user.id)} checked={user.id === checkedId} />
+                  <Radio edge="end" onChange={() => toggleCheckedId(user.uid)} checked={user.uid === checkedId} />
                 </ListItemIcon>
               </GitHubUserItem>
             ))}

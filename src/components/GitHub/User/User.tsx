@@ -48,7 +48,7 @@ const User: FC<Props> = ({ user: { name, login, repositories, languages } }) => 
           <Divider />
           <List>
             {repositories.map(repository => (
-              <GitHubRepositoryItem key={repository.id} item={repository} />
+              <GitHubRepositoryItem key={repository.uid} item={repository} />
             ))}
           </List>
         </Card>
@@ -61,7 +61,7 @@ const User: FC<Props> = ({ user: { name, login, repositories, languages } }) => 
           <Divider />
           <List>
             {languages.map(language => (
-              <GitHubLanguageItem key={language.id} item={language} />
+              <GitHubLanguageItem key={language.uid} item={language} />
             ))}
           </List>
         </Card>

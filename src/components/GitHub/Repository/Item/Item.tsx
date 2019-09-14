@@ -38,7 +38,7 @@ const GitHubRepositoryItem: FC<Props> = ({ item: { name, users } }) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List className={classes.nested} component="div" disablePadding>
             {users.map(user => (
-              <GitHubUserItem key={user.id} item={user} />
+              <GitHubUserItem key={user.uid} item={user} />
             ))}
           </List>
         </Collapse>

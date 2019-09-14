@@ -306,7 +306,7 @@ class Connection extends EventEmitter {
     }
     this._pongTimeout = null;
 
-    this._ws.removeAllListeners();
+    this._ws.removeAllListeners && this._ws.removeAllListeners();
     this._openPromise = null;
     this._closePromise = null;
     this.isOpen = false;

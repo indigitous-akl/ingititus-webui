@@ -88,7 +88,7 @@ const SearchableList: FC<Props> = ({ itemType, items, onChange, element }) => {
           </div>
         </Toolbar>
       </AppBar>
-      {items.length > 0 && items.map(item => element && createElement(element, { key: item.id, item: item }))}
+      {items.length > 0 && items.map(item => element && createElement(element, { key: item.uid, item: item }))}
       {items.length === 0 && (
         <div>
           <Typography className={classes.heading} variant="h6" align="center">

@@ -1,16 +1,16 @@
 export interface GitHubRepositoryType {
-  id: string;
+  uid: string;
   name: string;
   users: GitHubUserType[];
 }
 export interface GitHubLanguageType {
-  id: string;
+  uid: string;
   name: string;
   users: GitHubUserType[];
 }
 
 export interface GitHubUserType {
-  id: string;
+  uid: string;
   name: string;
   email: string;
   login: string;
@@ -19,7 +19,7 @@ export interface GitHubUserType {
 }
 
 export interface IndigitousUserType {
-  id: string;
+  uid: string;
   name: string;
   email: string;
   is: GitHubUserType | null;

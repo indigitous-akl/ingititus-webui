@@ -4,7 +4,7 @@ import { GitHubLanguageType, GitHubRepositoryType, GitHubUserType, IndigitousUse
 
 export const generateGitHubUser = (): GitHubUserType => {
   return {
-    id: uuid(),
+    uid: uuid(),
     name: faker.name.findName(),
     email: faker.internet.email(),
     login: faker.internet.userName(),
@@ -15,7 +15,7 @@ export const generateGitHubUser = (): GitHubUserType => {
 
 export const generateGitHubRepository = (): GitHubRepositoryType => {
   return {
-    id: uuid(),
+    uid: uuid(),
     name: faker.company.bsBuzz(),
     users: [generateGitHubUser()],
   };
@@ -23,7 +23,7 @@ export const generateGitHubRepository = (): GitHubRepositoryType => {
 
 export const generateGitHubLanguage = (): GitHubLanguageType => {
   return {
-    id: uuid(),
+    uid: uuid(),
     name: faker.company.bsBuzz(),
     users: [generateGitHubUser()],
   };
@@ -31,7 +31,7 @@ export const generateGitHubLanguage = (): GitHubLanguageType => {
 
 export const generateGitHubUserWithAssociations = (): GitHubUserType => {
   return {
-    id: uuid(),
+    uid: uuid(),
     name: faker.name.findName(),
     email: faker.internet.email(),
     login: faker.internet.userName(),
@@ -42,7 +42,7 @@ export const generateGitHubUserWithAssociations = (): GitHubUserType => {
 
 export const generateIndigitousUser = (): IndigitousUserType => {
   return {
-    id: uuid(),
+    uid: uuid(),
     name: faker.name.findName(),
     email: faker.internet.email(),
     is: generateGitHubUser(),
