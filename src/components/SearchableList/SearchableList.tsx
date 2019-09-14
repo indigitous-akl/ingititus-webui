@@ -8,7 +8,9 @@ import ReactSearchFuse from 'react-search-fuse';
 interface Props {
   loading?: boolean;
   itemType: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   element: FC<any>;
 }
 

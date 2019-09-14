@@ -6,6 +6,6 @@ import IndigitousUserList from './List';
 storiesOf('Indigitous/User/List', module)
   .add(
     'default',
-    (): ReactElement => <IndigitousUserList users={new Array(45).fill(null).map(() => generateIndigitousUser())} />,
+    (): ReactElement => <IndigitousUserList items={new Array(45).fill(null).map(() => generateIndigitousUser())} />,
   )
-  .add('empty', (): ReactElement => <IndigitousUserList users={[]} />);
+  .add('empty', (): ReactElement => <IndigitousUserList items={[]} />);

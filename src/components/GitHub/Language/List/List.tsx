@@ -4,11 +4,12 @@ import SearchableList from '../../../SearchableList';
 import GitHubLanguageItem from '../Item';
 
 interface Props {
-  languages: GitHubLanguageType[];
+  loading?: boolean;
+  items: GitHubLanguageType[];
 }
 
-const List: FC<Props> = ({ languages }) => (
-  <SearchableList itemType="GitHub Languages" items={languages} element={GitHubLanguageItem} />
+const List: FC<Props> = ({ loading, items }) => (
+  <SearchableList loading={loading} itemType="GitHub Languages" items={items} element={GitHubLanguageItem} />
 );
 
 export default List;

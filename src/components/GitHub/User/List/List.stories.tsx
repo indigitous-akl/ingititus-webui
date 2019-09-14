@@ -6,6 +6,6 @@ import GitHubUserList from './List';
 storiesOf('GitHub/User/List', module)
   .add(
     'default',
-    (): ReactElement => <GitHubUserList users={new Array(45).fill(null).map(() => generateGitHubUser())} />,
+    (): ReactElement => <GitHubUserList items={new Array(45).fill(null).map(() => generateGitHubUser())} />,
   )
-  .add('empty', (): ReactElement => <GitHubUserList users={[]} />);
+  .add('empty', (): ReactElement => <GitHubUserList items={[]} />);

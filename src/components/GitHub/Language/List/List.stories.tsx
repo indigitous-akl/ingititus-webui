@@ -6,8 +6,6 @@ import GitHubLanaguageList from './List';
 storiesOf('GitHub/Language/List', module)
   .add(
     'default',
-    (): ReactElement => (
-      <GitHubLanaguageList languages={new Array(45).fill(null).map(() => generateGitHubLanguage())} />
-    ),
+    (): ReactElement => <GitHubLanaguageList items={new Array(45).fill(null).map(() => generateGitHubLanguage())} />,
   )
-  .add('empty', (): ReactElement => <GitHubLanaguageList languages={[]} />);
+  .add('empty', (): ReactElement => <GitHubLanaguageList items={[]} />);

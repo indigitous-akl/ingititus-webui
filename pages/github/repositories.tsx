@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import React, { FC, Fragment } from 'react';
 import GitHubRepositoryList from '../../src/components/GitHub/Repository/List';
+import ListContainer from '../../src/containers/List';
 
-const repositories: FC = () => (
+const GitHubRepositoriesPage: FC = () => (
   <Fragment>
     <Head>
-      <title>GitHub Repositories</title>
+      <title>GitHub Repository</title>
     </Head>
-    <GitHubRepositoryList repositories={[]}></GitHubRepositoryList>
+    <ListContainer element={GitHubRepositoryList} type="github_repository" />
   </Fragment>
 );
-export default repositories;
+export default GitHubRepositoriesPage;

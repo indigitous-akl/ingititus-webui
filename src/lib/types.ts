@@ -1,26 +1,22 @@
-export interface GitHubRepositoryType {
+export interface BaseType {
   uid: string;
   name: string;
+}
+export interface GitHubRepositoryType extends BaseType {
   users: GitHubUserType[];
 }
-export interface GitHubLanguageType {
-  uid: string;
-  name: string;
+export interface GitHubLanguageType extends BaseType {
   users: GitHubUserType[];
 }
 
-export interface GitHubUserType {
-  uid: string;
-  name: string;
+export interface GitHubUserType extends BaseType {
   email: string;
   login: string;
   repositories: GitHubRepositoryType[];
   languages: GitHubLanguageType[];
 }
 
-export interface IndigitousUserType {
-  uid: string;
-  name: string;
+export interface IndigitousUserType extends BaseType {
   email: string;
   is: GitHubUserType | null;
   mightBe: GitHubUserType[];

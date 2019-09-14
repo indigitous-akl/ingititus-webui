@@ -1,2 +1,2 @@
-import GitHubUserList from './List';
-export default GitHubUserList;
+import IndigitousUserList from './List';
+export default IndigitousUserList;

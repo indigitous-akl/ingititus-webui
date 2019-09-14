@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import React, { FC, Fragment } from 'react';
-import IndigitousUsersContainer from '../../src/containers/Indigitous/Users';
+import IndigitousUserList from '../../src/components/Indigitous/User/List';
+import ListContainer from '../../src/containers/List';
 
 const users: FC = () => (
   <Fragment>
     <Head>
       <title>Indigitous Users</title>
     </Head>
-    <IndigitousUsersContainer />
+    <ListContainer element={IndigitousUserList} type="indigitous_user" />
   </Fragment>
 );
 export default users;

@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import React, { FC, Fragment } from 'react';
-import GitHubUsersContainer from '../../src/containers/GitHub/Users';
+import GitHubUserList from '../../src/components/GitHub/User/List';
+import ListContainer from '../../src/containers/List';
 
-const users: FC = () => (
+const GitHubUsersPage: FC = () => (
   <Fragment>
     <Head>
       <title>GitHub Users</title>
     </Head>
-    <GitHubUsersContainer />
+    <ListContainer element={GitHubUserList} type="github_user" />
   </Fragment>
 );
-export default users;
+export default GitHubUsersPage;

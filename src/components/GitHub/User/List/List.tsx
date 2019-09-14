@@ -4,12 +4,12 @@ import SearchableList from '../../../SearchableList';
 import GitHubUserItem from '../Item';
 
 interface Props {
-  loading: boolean;
-  users: GitHubUserType[];
+  loading?: boolean;
+  items: GitHubUserType[];
 }
 
-const List: FC<Props> = ({ loading, users }) => (
-  <SearchableList loading={loading} itemType="GitHub Users" items={users} element={GitHubUserItem} />
+const List: FC<Props> = ({ loading, items }) => (
+  <SearchableList loading={loading} itemType="GitHub Users" items={items} element={GitHubUserItem} />
 );
 
 export default List;

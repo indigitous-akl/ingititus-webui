@@ -4,11 +4,12 @@ import SearchableList from '../../../SearchableList';
 import GitHubRepositoryItem from '../Item';
 
 interface Props {
-  repositories: GitHubRepositoryType[];
+  loading?: boolean;
+  items: GitHubRepositoryType[];
 }
 
-const List: FC<Props> = ({ repositories }) => (
-  <SearchableList itemType="GitHub Repositories" items={repositories} element={GitHubRepositoryItem} />
+const List: FC<Props> = ({ loading, items }) => (
+  <SearchableList loading={loading} itemType="GitHub Repositories" items={items} element={GitHubRepositoryItem} />
 );
 
 export default List;

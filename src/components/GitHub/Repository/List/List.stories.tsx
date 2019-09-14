@@ -6,8 +6,6 @@ import GitHubRepositoryList from './List';
 storiesOf('GitHub/Repository/List', module)
   .add(
     'default',
-    (): ReactElement => (
-      <GitHubRepositoryList repositories={new Array(45).fill(null).map(() => generateGitHubRepository())} />
-    ),
+    (): ReactElement => <GitHubRepositoryList items={new Array(45).fill(null).map(() => generateGitHubRepository())} />,
   )
-  .add('empty', (): ReactElement => <GitHubRepositoryList repositories={[]} />);
+  .add('empty', (): ReactElement => <GitHubRepositoryList items={[]} />);
