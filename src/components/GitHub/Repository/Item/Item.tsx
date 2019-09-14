@@ -1,9 +1,10 @@
-import { Collapse, List, ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
+import { Collapse, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Link from 'next/link';
 import React, { FC, Fragment, useState } from 'react';
+import { GoMarkGithub } from 'react-icons/go';
 import { GitHubRepositoryType } from '../../../../lib/types';
 import GitHubUserItem from '../../User/Item';
 
@@ -32,6 +33,11 @@ const GitHubRepositoryItem: FC<Props> = ({ item: { uid, name, users } }) => {
       <Link href="/github/repositories/[uid]" as={`/github/repositories/${uid}`}>
         <ListItem ContainerComponent="div" component="a" button>
           <ListItemText primary={name} secondary={users && users.length > 0 && `${users.length} collaborators`} />
+          <ListItemSecondaryAction>
+            <IconButton edge="end" href={`https://github.com/${name}`} target="_blank">
+              <GoMarkGithub />
+            </IconButton>
+          </ListItemSecondaryAction>
           {users && users.length > 0 && (
             <ListItemSecondaryAction onClick={handleClick}>
               {open ? <ExpandLess /> : <ExpandMore />}

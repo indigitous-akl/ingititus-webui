@@ -6,7 +6,7 @@ import ListContainer from '../../src/containers/List';
 const GitHubRepositoriesPage: FC = () => (
   <Fragment>
     <Head>
-      <title>GitHub Repository</title>
+      <title>GitHub Repositories</title>
     </Head>
     <ListContainer element={GitHubRepositoryList} type="repository" />
   </Fragment>
