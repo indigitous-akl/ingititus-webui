@@ -11,5 +11,5 @@ storiesOf('Indigitous/User', module)
   )
   .add(
     'multiple matches',
-    (): ReactElement => <IndigitousUser item={tap(value => (value.is = null), generateIndigitousUser())} />,
+    (): ReactElement => <IndigitousUser item={tap(value => (value.is = undefined), generateIndigitousUser())} />,
   );
