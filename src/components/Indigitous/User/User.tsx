@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  Divider,
   List,
   ListItem,
   ListItemAvatar,
@@ -56,6 +57,7 @@ const User: FC<Props> = ({ user: { name, email, is, mightBe } }) => {
           <CardContent>
             <Typography variant="subtitle1">GitHub User</Typography>
           </CardContent>
+          <Divider />
           <GitHubUser user={is}></GitHubUser>
         </Card>
       )}
@@ -64,6 +66,7 @@ const User: FC<Props> = ({ user: { name, email, is, mightBe } }) => {
           <CardContent>
             <Typography variant="subtitle1">Potential GitHub User Matches</Typography>
           </CardContent>
+          <Divider />
           <List>
             {mightBe.map(user => (
               <GitHubUser key={user.id} user={user} onClick={() => toggleCheckedId(user.id)}>

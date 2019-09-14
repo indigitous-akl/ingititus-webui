@@ -1,22 +1,49 @@
-import { IconButton, ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
-import React, { FC } from 'react';
-import { GoMarkGithub } from 'react-icons/go';
+import { Collapse, List, ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import React, { FC, Fragment, useState } from 'react';
 import { GitHubRepositoryType } from '../../../../lib/types';
+import GitHubUserItem from '../../User/Item';
 
 interface Props {
   repository: GitHubRepositoryType;
 }
 
-const GitHubRepositoryItem: FC<Props> = ({ repository: { name } }) => {
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    nested: {
+      paddingLeft: theme.spacing(2),
+    },
+  }),
+);
+
+const GitHubRepositoryItem: FC<Props> = ({ repository: { name, users } }) => {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleClick = (): void => {
+    setOpen(!open);
+  };
+
   return (
-    <ListItem ContainerComponent="div">
-      <ListItemText primary={name} />
-      <ListItemSecondaryAction>
-        <IconButton edge="end" href={`https://github.com/${name}`} target="_blank">
-          <GoMarkGithub />
-        </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
+    <Fragment>
+      <ListItem ContainerComponent="div" button onClick={handleClick}>
+        <ListItemText primary={name} secondary={users.length > 0 && `${users.length} collaborators`} />
+        {users.length > 0 && (
+          <ListItemSecondaryAction>{open ? <ExpandLess /> : <ExpandMore />}</ListItemSecondaryAction>
+        )}
+      </ListItem>
+      {users.length > 0 && (
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List className={classes.nested} component="div" disablePadding>
+            {users.map(user => (
+              <GitHubUserItem key={user.id} user={user} />
+            ))}
+          </List>
+        </Collapse>
+      )}
+    </Fragment>
   );
 };
 

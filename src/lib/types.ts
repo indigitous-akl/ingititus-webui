@@ -1,10 +1,12 @@
 export interface GitHubRepositoryType {
   id: string;
   name: string;
+  users: GitHubUserType[];
 }
 export interface GitHubLanguageType {
   id: string;
   name: string;
+  users: GitHubUserType[];
 }
 
 export interface GitHubUserType {

@@ -2,10 +2,14 @@ import faker from 'faker';
 import uuid from 'uuid/v4';
 import { GitHubLanguageType, GitHubRepositoryType, GitHubUserType, IndigitousUserType } from './types';
 
-export const generateGitHubLanguage = (): GitHubLanguageType => {
+export const generateGitHubUser = (): GitHubUserType => {
   return {
     id: uuid(),
-    name: faker.company.bsBuzz(),
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    login: faker.internet.userName(),
+    repositories: [],
+    languages: [],
   };
 };
 
@@ -13,10 +17,19 @@ export const generateGitHubRepository = (): GitHubRepositoryType => {
   return {
     id: uuid(),
     name: faker.company.bsBuzz(),
+    users: [generateGitHubUser()],
   };
 };
 
-export const generateGitHubUser = (): GitHubUserType => {
+export const generateGitHubLanguage = (): GitHubLanguageType => {
+  return {
+    id: uuid(),
+    name: faker.company.bsBuzz(),
+    users: [generateGitHubUser()],
+  };
+};
+
+export const generateGitHubUserWithAssociations = (): GitHubUserType => {
   return {
     id: uuid(),
     name: faker.name.findName(),

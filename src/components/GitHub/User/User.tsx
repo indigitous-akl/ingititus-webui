@@ -1,4 +1,14 @@
-import { Avatar, Card, CardContent, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
+import {
+  Avatar,
+  Card,
+  CardContent,
+  Divider,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { FC, Fragment } from 'react';
 import { GitHubUserType } from '../../../lib/types';
@@ -35,6 +45,7 @@ const User: FC<Props> = ({ user: { name, login, repositories, languages } }) => 
           <CardContent>
             <Typography variant="subtitle1">Repositories</Typography>
           </CardContent>
+          <Divider />
           <List>
             {repositories.map(repository => (
               <GitHubRepositoryItem key={repository.id} repository={repository} />
@@ -47,6 +58,7 @@ const User: FC<Props> = ({ user: { name, login, repositories, languages } }) => 
           <CardContent>
             <Typography variant="subtitle1">Languages</Typography>
           </CardContent>
+          <Divider />
           <List>
             {languages.map(language => (
               <GitHubLanguageItem key={language.id} language={language} />
